@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% load compress %}
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}" />
+    {% compress css %}
+    <link rel="stylesheet" type="text/scss" href="{% static 'main/css/main.scss' %}" />
+    {% endcompress %}
+    <title>{% block title %}{% endblock %} - Content Console</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright {% now "Y" %} @seanlinxs
+        {% endblock %}
+    </div>
+</body>
+</html>
