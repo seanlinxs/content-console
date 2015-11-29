@@ -102,9 +102,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),
 )
 
-# Security
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# Security, until we have certificates for https
+#CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
 
 # Sensitive settings
 with open('/etc/settings.json') as s:
