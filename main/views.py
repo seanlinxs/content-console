@@ -1,11 +1,13 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import SiteOwner, Website
 
 # Create your views here.
 
+@login_required
 def owners(request):
     owners = SiteOwner.objects.all()
     context = {'owners': owners}
