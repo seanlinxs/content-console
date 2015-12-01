@@ -1,8 +1,7 @@
 import datetime
-from .models import SiteOwner, Image
+from .models import Image
 from django.test import TestCase
 from django.utils import timezone
-from django.core.urlresolvers import reverse
 
 # Create your tests here.
 
@@ -32,21 +31,3 @@ class ImageMethodTests(TestCase):
         uploaded_at = timezone.now() - datetime.timedelta(hours=6)
         image = Image(uploaded_at=uploaded_at)
         self.assertEqual(image.was_uploaded_recently(), True)
-
-
-def create_site_owner(name, email, phone):
-    return SiteOwner.objects.create(name=name, email=email, phone=phone)
-
-    
-class OwnersViewTests(TestCase):
-    def test_index_view_with_zero_owners(self):
-        response = self.client.get(reverse('main:owners'))
-        self.assertEqual(response.status_code, 200)
-        self.assertQuerysetEqual(response.context['owners'], [])
-
-
-    def test_index_view_with_one_owners(self):
-        create_site_owner('sean', 'sean.lin@live.com', '0431071978')
-        response = self.client.get(reverse('main:owners'))
-        self.assertEqual(response.status_code, 200)
-        self.assertQuerysetEqual(response.context['owners'], ['<SiteOwner: sean<sean.lin@live.com>>'])
