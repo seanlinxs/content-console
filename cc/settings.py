@@ -106,6 +106,8 @@ COMPRESS_PRECOMPILERS = (
 #CSRF_COOKIE_SECURE = True
 #SESSION_COOKIE_SECURE = True
 
+LOGIN_REDIRECT_URL = '/main/websites'
+
 # Sensitive settings
 with open('/etc/settings.json') as s:
     settings = json.load(s)

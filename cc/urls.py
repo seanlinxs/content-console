@@ -17,8 +17,10 @@ from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
 
 from main import urls as main_urls
+from main.views.home import Home
 
 urlpatterns = [
+    url(r'^$', Home.as_view(), name='home'),
     url(r'^main/', include(main_urls, namespace='main')),
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
