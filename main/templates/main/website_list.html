@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}Websites{% endblock %}</h1>
+
+{% for website in websites %}
+<div class="row"><h2><a href="{% url 'main:website_details' pk=website.id %}">{{ website.name }}</a></h2></div>
+{% endfor %}
+
+{% endblock %}

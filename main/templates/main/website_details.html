@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}{{ website.name }}{% endblock %}</h1>
+
+<div class="row">
+    <label>Name</label><p>{{ website.name }}</p>
+</div>
+<div class="row">
+    <label>SiteOwner</label><p>{{ website.owner.username }}</p>
+</div>
+
+{% endblock %}
