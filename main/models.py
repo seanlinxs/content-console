@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from django.core.urlresolvers import reverse
 
 class Website(models.Model):
     name = models.CharField(max_length=200)
@@ -10,6 +11,9 @@ class Website(models.Model):
     
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('main:website_list')
 
 
 class Page(models.Model):

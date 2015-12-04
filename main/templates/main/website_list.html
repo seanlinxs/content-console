@@ -4,8 +4,10 @@
 
 <h1>{% block title %}Websites{% endblock %}</h1>
 
+<p><a href="{% url 'main:website_create' %}">Create new website</a></p>
+
 {% for website in websites %}
-<div class="row"><h2><a href="{% url 'main:website_details' pk=website.id %}">{{ website.name }}</a></h2></div>
+<div class="row"><h2><a href="{% url 'main:website_update' pk=website.id %}">{{ website.name }}</a></h2></div>
 {% endfor %}
 
 {% endblock %}
