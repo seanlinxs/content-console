@@ -6,8 +6,21 @@
 
 <p><a href="{% url 'main:website_create' %}">Create new website</a></p>
 
-{% for website in websites %}
-<div class="row"><h2><a href="{% url 'main:website_update' pk=website.id %}">{{ website.name }}</a></h2></div>
-{% endfor %}
+<div class="table-responsive">
+	<table class="table table-hover">
+		{% for website in websites %}
+		<tr>
+			<td class="col-md-10">
+				<a href="{% url 'main:website_update' pk=website.id %}">{{ website.name }}</a>
+			</td>
+			<td class="col-md-2">
+				<a href="{% url 'main:website_delete' pk=website.id %}">
+					<span class="glyphicon glyphicon-trash"></span> Delete
+				</a>
+			</td>
+		</tr>
+		{% endfor %}	
+	</table>
+</div>
 
 {% endblock %}

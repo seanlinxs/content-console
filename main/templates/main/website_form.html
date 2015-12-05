@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<h1>{% block title %}Website{% endblock %}</h1>
+<h1>{% block title %}Create new website{% endblock %}</h1>
 
 <form method="post">
 	{% csrf_token %}
-	{{ form }}
-	<input type="submit" value="Save">
+	{% include 'main/form_snippet.html' %}
+	<div>
+		<input type="submit" value="Save" class="btn btn-primary">
+		<a href="{% url 'main:website_list' %}" class="btn btn-default">Cancel</a>
+	</div>
 </form>
 
 {% endblock %}
