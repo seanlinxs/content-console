@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}{{ title }}{% endblock %}</h1>
+
+<form method="post">
+	{% csrf_token %}
+	{% include 'main/form_snippet.html' %}
+	<div>
+		<input type="submit" value="Save" class="btn btn-primary">
+		<a href="{% url 'main:page_details' site_id=site_id pk=page_id %}" class="btn btn-default">Cancel</a>
+	</div>
+</form>
+
+{% endblock %}

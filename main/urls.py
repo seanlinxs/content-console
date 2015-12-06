@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from main.views.websites import WebsiteList, WebsiteDetails, WebsiteCreate, WebsiteUpdate, WebsiteDelete
 from main.views.pages import PageCreate, PageDetails, PageUpdate, PageDelete
+from main.views.textblocks import TextBlockCreate
 
 urlpatterns = [
     url(r'^websites/$', WebsiteList.as_view(), name='website_list'),
@@ -12,4 +13,5 @@ urlpatterns = [
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<pk>\d+)/$', PageDetails.as_view(), name='page_details'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<pk>\d+)/update/$', PageUpdate.as_view(), name='page_update'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<pk>\d+)/delete/$', PageDelete.as_view(), name='page_delete'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/textblocks/add/$', TextBlockCreate.as_view(), name='textblock_create'),
 ]
