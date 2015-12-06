@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 
 class Website(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     owner = models.ForeignKey(User)
     
     
@@ -15,7 +15,7 @@ class Website(models.Model):
 
 
 class Page(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     site = models.ForeignKey(Website)
     title = models.CharField(max_length=200, help_text="Title will be displayed in both browser's title bar and page title.")
     heading = models.TextField(blank=True)
@@ -26,7 +26,7 @@ class Page(models.Model):
 
 
 class TextBlock(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     page = models.ForeignKey(Page)
     content = models.TextField()
 
@@ -36,7 +36,7 @@ class TextBlock(models.Model):
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     url = models.CharField(max_length=500)
     path = models.CharField(max_length=500)
     size = models.BigIntegerField()
