@@ -34,7 +34,7 @@ class PageCreate(CreateView):
 
 
 class PageDetails(DetailView):
-	model = PageCreate
+	model = Page
 	context_object_name = 'page'
 	template_name = 'main/page_details.html'
 
@@ -42,6 +42,13 @@ class PageDetails(DetailView):
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
 		return super(PageDetails, self).dispatch(*args, **kwargs)
+
+
+	def get_context_data(self, **kwargs):
+		context = super(PageDetails, self).get_context_data(**kwargs)
+		context['textblocks'] = self.object.textblock_set.all()
+		context['images'] = self.object.image_set.all()
+		return context
 
 
 class PageUpdate(UpdateView):
