@@ -11,11 +11,14 @@
 		{% for website in websites %}
 		<tr>
 			<td class="col-md-10">
-				<a href="{% url 'main:website_update' pk=website.id %}">{{ website.name }}</a>
+				<a href="{% url 'main:website_details' pk=website.id %}">{{ website.name }}</a>
 			</td>
 			<td class="col-md-2">
-				<a href="{% url 'main:website_delete' pk=website.id %}">
-					<span class="glyphicon glyphicon-trash"></span> Delete
+				<a href="{% url 'main:website_update' pk=website.id %}" title="Edit">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</a>
+				<a href="{% url 'main:website_delete' pk=website.id %}" title="Delete">
+					<span class="glyphicon glyphicon-trash"></span>
 				</a>
 			</td>
 		</tr>

@@ -9,11 +9,9 @@ class Website(models.Model):
     name = models.CharField(max_length=200)
     owner = models.ForeignKey(User)
     
+    
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('main:website_list')
 
 
 class Page(models.Model):
@@ -22,8 +20,9 @@ class Page(models.Model):
     title = models.CharField(max_length=200)
     heading = models.TextField()
 
+    
     def __str__(self):
-        return "{0} - {1}".format(self.name, self.title)
+        return self.name
 
 
 class TextBlock(models.Model):
@@ -31,6 +30,7 @@ class TextBlock(models.Model):
     page = models.ForeignKey(Page)
     content = models.TextField()
 
+    
     def __str__(self):
         return self.name
 
@@ -43,9 +43,11 @@ class Image(models.Model):
     uploaded_at = models.DateTimeField()
     uploaded_by = models.ForeignKey(User)
 
+    
     def __str__(self):
         return "{0}({1}) - {2}".format(self.name, self.size, self.url)
 
+    
     def was_uploaded_recently(self):
         now = timezone.now()
         return (now - datetime.timedelta(days=1)) <= self.uploaded_at <= now

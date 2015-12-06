@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
-from main.models import Website
+from main.models import Website, Page
 
 
 class WebsiteList(ListView):
@@ -33,9 +33,17 @@ class WebsiteDetails(DetailView):
         return super(WebsiteDetails, self).dispatch(*args, **kwargs)
 
 
+    def get_context_data(self, **kwargs):
+        context = super(WebsiteDetails, self).get_context_data(**kwargs)
+        context['pages'] = Page.objects.filter(site=self.object)
+        return context
+
+
 class WebsiteCreate(CreateView):
     model = Website
     fields = ['name']
+    success_url = reverse_lazy('main:website_list')
+
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -47,14 +55,27 @@ class WebsiteCreate(CreateView):
         return super(WebsiteCreate, self).form_valid(form)
 
 
+    def get_context_data(self, **kwargs):
+        context = super(WebsiteCreate, self).get_context_data(**kwargs)
+        context['title'] = 'Create new website'
+        return context
+
+
 class WebsiteUpdate(UpdateView):
     model = Website
     fields = ['name']
+    success_url = reverse_lazy('main:website_list')
 
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(WebsiteUpdate, self).dispatch(*args, **kwargs)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(WebsiteUpdate, self).get_context_data(**kwargs)
+        context['title'] = 'Edit website'
+        return context
 
 
 class WebsiteDelete(DeleteView):
