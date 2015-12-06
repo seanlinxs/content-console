@@ -42,6 +42,7 @@ class Image(models.Model):
     size = models.BigIntegerField()
     uploaded_at = models.DateTimeField()
     uploaded_by = models.ForeignKey(User)
+    page = models.ForeignKey(Page, null=True)
 
     
     def __str__(self):
