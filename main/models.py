@@ -17,8 +17,8 @@ class Website(models.Model):
 class Page(models.Model):
     name = models.CharField(max_length=200)
     site = models.ForeignKey(Website)
-    title = models.CharField(max_length=200)
-    heading = models.TextField()
+    title = models.CharField(max_length=200, help_text="Title will be displayed in both browser's title bar and page title.")
+    heading = models.TextField(blank=True)
 
     
     def __str__(self):

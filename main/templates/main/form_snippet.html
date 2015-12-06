@@ -2,7 +2,11 @@
 
 {% for field in form %}
 <div class="form-group">
+	{{ field.label_tag }}
 	{{ field.errors }}
-	{{ field.label_tag }} {{ field|addclass:'form-control' }}
+	{{ field|addclass:'form-control' }}
+	<div class="small">
+		{{ field.help_text }}
+	</div>
 </div>
 {% endfor %}
