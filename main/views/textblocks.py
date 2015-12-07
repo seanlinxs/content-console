@@ -54,3 +54,23 @@ class TextBlockUpdate(UpdateView):
 
 	def get_success_url(self, **kwargs):
 		return reverse_lazy('main:page_details', kwargs={'site_id':self.kwargs.get('site_id'), 'pk':self.kwargs.get('page_id')})
+
+
+class TextBlockDelete(DeleteView):
+	model = TextBlock
+
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(TextBlockDelete, self).dispatch(*args, **kwargs)
+
+
+	def get_context_data(self, **kwargs):
+		context = super(TextBlockDelete, self).get_context_data(**kwargs)
+		context['site_id'] = self.kwargs.get('site_id')
+		context['page_id'] = self.kwargs.get('page_id')
+		return context
+
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy('main:page_details', kwargs={'site_id':self.kwargs.get('site_id'), 'pk':self.kwargs.get('page_id')})
