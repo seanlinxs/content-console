@@ -10,6 +10,10 @@ class Website(models.Model):
     owner = models.ForeignKey(User)
     
     
+    class Meta:
+        ordering = ['id']
+
+    
     def __str__(self):
         return self.name
 
@@ -21,6 +25,10 @@ class Page(models.Model):
     heading = models.TextField(blank=True)
 
     
+    class Meta:
+        ordering = ['id']
+
+    
     def __str__(self):
         return self.name
 
@@ -29,6 +37,10 @@ class TextBlock(models.Model):
     name = models.CharField(max_length=200, unique=True)
     page = models.ForeignKey(Page)
     content = models.TextField()
+
+
+    class Meta:
+        ordering = ['id']
 
     
     def __str__(self):
@@ -43,6 +55,10 @@ class Image(models.Model):
     uploaded_at = models.DateTimeField()
     uploaded_by = models.ForeignKey(User)
     page = models.ForeignKey(Page, null=True)
+
+    
+    class Meta:
+        ordering = ['id']
 
     
     def __str__(self):

@@ -8,21 +8,26 @@
 	<div class="panel panel-default" id="textblocks-panel">
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<a data-toggle="collapse" data-target="#textblocks" href="#textblocks" class="collapsed">Text blocks</a>
+				<a data-toggle="collapse" data-target="#textblocks" href="#textblocks">Text blocks</a>
 			</h4>
 		</div>
-		<div class="panel-collaps collapse" id="textblocks">
+		<div class="panel-collaps collapse in" id="textblocks">
 			<div class="panel-body">
 				<p><a href="{% url 'main:textblock_create' site_id=page.site.id page_id=page.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
 				<div class="table-responsive">
 					<table class="table table-hover">
 						{% for textblock in textblocks %}
 						<tr>
-							<td class="col-md-10">
-								{{ textblock.name }}
+							<td class="col-md-11">
+								<p>
+									<label>{{ textblock.name }}</label>
+								</p>
+								<p>
+									{{ textblock.content }}
+								</p>
 							</td>
-							<td class="col-md-2">
-								<a href="#" title="Edit">
+							<td class="col-md-1">
+								<a href="{% url 'main:textblock_update' site_id=page.site.id page_id=page.id pk=textblock.id %}" title="Edit">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
 								<a href="#" title="Delete">
@@ -39,19 +44,19 @@
 	<div class="panel panel-default" id="images-panel">
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<a data-toggle="collapse" data-target="#images" href="#images" class="collapsed">Images</a>
+				<a data-toggle="collapse" data-target="#images" href="#images">Images</a>
 			</h4>
 		</div>
-		<div class="panel-collaps collapse" id="images">
+		<div class="panel-collaps collapse in" id="images">
 			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-hover">
 						{% for image in images %}
 						<tr>
-							<td class="col-md-10">
+							<td class="col-md-11">
 								{{ image.name }}
 							</td>
-							<td class="col-md-2">
+							<td class="col-md-1">
 								<a href="#" title="Edit">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>

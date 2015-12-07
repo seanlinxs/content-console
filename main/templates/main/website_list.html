@@ -10,10 +10,10 @@
 	<table class="table table-hover">
 		{% for website in websites %}
 		<tr>
-			<td class="col-md-10">
+			<td class="col-md-11">
 				<a href="{% url 'main:website_details' pk=website.id %}">{{ website.name }}</a>
 			</td>
-			<td class="col-md-2">
+			<td class="col-md-1">
 				<a href="{% url 'main:website_update' pk=website.id %}" title="Edit">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</a>
