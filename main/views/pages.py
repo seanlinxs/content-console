@@ -19,6 +19,7 @@ class PageCreate(CreateView):
 
 	def form_valid(self, form):
 		form.instance.site = Website.objects.get(pk=self.kwargs.get('site_id'))
+
 		return super(PageCreate, self).form_valid(form)
 
 
@@ -26,6 +27,7 @@ class PageCreate(CreateView):
 		context = super(PageCreate, self).get_context_data(**kwargs)
 		context['title'] = 'Create new page'
 		context['site_id'] = self.kwargs.get('site_id')
+
 		return context
 
 
@@ -47,7 +49,8 @@ class PageDetails(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(PageDetails, self).get_context_data(**kwargs)
 		context['textblocks'] = self.object.textblock_set.all()
-		context['images'] = self.object.image_set.all()
+		context['pageimages'] = self.object.pageimage_set.all()
+
 		return context
 
 
@@ -64,6 +67,7 @@ class PageUpdate(UpdateView):
 		context = super(PageUpdate, self).get_context_data(**kwargs)
 		context['title'] = 'Edit page'
 		context['site_id'] = self.kwargs.get('site_id')
+
 		return context
 
 
@@ -83,6 +87,7 @@ class PageDelete(DeleteView):
 	def get_context_data(self, **kwargs):
 		context = super(PageDelete, self).get_context_data(**kwargs)
 		context['site_id'] = self.kwargs.get('site_id')
+
 		return context
 
 

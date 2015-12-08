@@ -97,6 +97,9 @@ STATICFILES_FINDERS = (
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # SASS support
 COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),

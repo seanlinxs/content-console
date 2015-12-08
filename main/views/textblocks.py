@@ -1,10 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
-from main.models import Website, Page, TextBlock
+from main.models import Page, TextBlock
 
 
 class TextBlockCreate(CreateView):
@@ -19,6 +18,7 @@ class TextBlockCreate(CreateView):
 
 	def form_valid(self, form):
 		form.instance.page = Page.objects.get(pk=self.kwargs.get('page_id'))
+
 		return super(TextBlockCreate, self).form_valid(form)
 
 
@@ -27,6 +27,7 @@ class TextBlockCreate(CreateView):
 		context['title'] = 'Create new text block'
 		context['site_id'] = self.kwargs.get('site_id')
 		context['page_id'] = self.kwargs.get('page_id')
+
 		return context
 
 
@@ -49,6 +50,7 @@ class TextBlockUpdate(UpdateView):
 		context['title'] = 'Edit text block'
 		context['site_id'] = self.kwargs.get('site_id')
 		context['page_id'] = self.kwargs.get('page_id')
+
 		return context
 
 
@@ -69,6 +71,7 @@ class TextBlockDelete(DeleteView):
 		context = super(TextBlockDelete, self).get_context_data(**kwargs)
 		context['site_id'] = self.kwargs.get('site_id')
 		context['page_id'] = self.kwargs.get('page_id')
+		
 		return context
 
 

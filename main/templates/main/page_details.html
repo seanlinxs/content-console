@@ -49,12 +49,14 @@
 		</div>
 		<div class="panel-collaps collapse in" id="images">
 			<div class="panel-body">
+				<p><a href="{% url 'main:pageimage_upload' site_id=page.site.id page_id=page.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
 				<div class="table-responsive">
 					<table class="table table-hover">
-						{% for image in images %}
+						{% for pageimage in pageimages %}
 						<tr>
 							<td class="col-md-11">
-								{{ image.name }}
+								<p>{{ pageimage.name }}</p>
+								<p><img src="{{ pageimage.image.url }}" alt="{{ pageimage.name }}"></p>
 							</td>
 							<td class="col-md-1">
 								<a href="#" title="Edit">

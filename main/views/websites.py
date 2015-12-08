@@ -36,6 +36,7 @@ class WebsiteDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super(WebsiteDetails, self).get_context_data(**kwargs)
         context['pages'] = self.object.page_set.all()
+
         return context
 
 
@@ -52,12 +53,14 @@ class WebsiteCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+
         return super(WebsiteCreate, self).form_valid(form)
 
 
     def get_context_data(self, **kwargs):
         context = super(WebsiteCreate, self).get_context_data(**kwargs)
         context['title'] = 'Create new website'
+
         return context
 
 
@@ -75,6 +78,7 @@ class WebsiteUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(WebsiteUpdate, self).get_context_data(**kwargs)
         context['title'] = 'Edit website'
+        
         return context
 
 

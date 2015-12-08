@@ -47,14 +47,10 @@ class TextBlock(models.Model):
         return self.name
 
 
-class Image(models.Model):
+class PageImage(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    url = models.CharField(max_length=500)
-    path = models.CharField(max_length=500)
-    size = models.BigIntegerField()
-    uploaded_at = models.DateTimeField()
-    uploaded_by = models.ForeignKey(User)
-    page = models.ForeignKey(Page, null=True)
+    image = models.FileField(upload_to='pageimages/%Y/%m/%d')
+    page = models.ForeignKey(Page)
 
     
     class Meta:
@@ -63,8 +59,3 @@ class Image(models.Model):
     
     def __str__(self):
         return "{0}({1}) - {2}".format(self.name, self.size, self.url)
-
-    
-    def was_uploaded_recently(self):
-        now = timezone.now()
-        return (now - datetime.timedelta(days=1)) <= self.uploaded_at <= now
