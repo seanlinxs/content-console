@@ -111,6 +111,12 @@ COMPRESS_PRECOMPILERS = (
 
 LOGIN_REDIRECT_URL = '/main/websites'
 
+# Administrators
+ADMINS = (('Sean Lin', 'sean.linxs@gmail.com'))
+
+# Email
+EMAIL_HOST = 'localhost'
+
 # Sensitive settings
 with open('/etc/cc/settings.json') as s:
     settings = json.load(s)
