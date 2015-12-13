@@ -112,7 +112,7 @@ COMPRESS_PRECOMPILERS = (
 LOGIN_REDIRECT_URL = '/main/websites'
 
 # Administrators
-ADMINS = (('Sean Lin', 'sean.linxs@gmail.com'))
+ADMINS = (('Sean Lin', 'sean.linxs@gmail.com'),)
 
 # Email
 EMAIL_HOST = 'localhost'
