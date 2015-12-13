@@ -112,7 +112,7 @@ COMPRESS_PRECOMPILERS = (
 LOGIN_REDIRECT_URL = '/main/websites'
 
 # Sensitive settings
-with open('/etc/settings.json') as s:
+with open('/etc/cc/settings.json') as s:
     settings = json.load(s)
 
     ALLOWED_HOSTS = settings['ALLOWED_HOSTS']
