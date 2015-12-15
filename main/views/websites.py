@@ -36,6 +36,7 @@ class WebsiteDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super(WebsiteDetails, self).get_context_data(**kwargs)
         context['pages'] = self.object.page_set.all()
+        context['news'] = self.object.news_set.all()
 
         return context
 

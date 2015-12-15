@@ -2,7 +2,7 @@ import uuid
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import FormView
+from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
 

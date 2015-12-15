@@ -59,3 +59,14 @@ class PageImage(models.Model):
     
     def __str__(self):
         return "{0}({1}) - {2}".format(self.name, self.size, self.url)
+
+
+class News(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    content = models.TextField()
+    image = models.FileField(upload_to='newsimages/%Y/%m/%d')
+    site = models.ForeignKey(Website)
+
+
+    class Meta:
+        ordering = ['id']
