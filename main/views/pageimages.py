@@ -21,9 +21,9 @@ class PageImageUpload(FormView):
 
 
 	def form_valid(self, form):
-		page_image = PageImage(image=self.get_form_kwargs().get('files')['image'])
+		page_image = PageImage(image=form.cleaned_data.get('image'))
 		page_image.page = Page.objects.get(pk=self.kwargs.get('page_id'))
-		page_image.name = str(uuid.uuid4())
+		page_image.name = form.cleaned_data.get('name')
 		page_image.save()
 
 		return redirect(self.get_success_url())
