@@ -1,7 +1,7 @@
 from django import forms
 
 
-class PageImageUploadForm(forms.Form):
+class PageImageForm(forms.Form):
     name = forms.CharField()
     image = forms.FileField(label='Select an image file')
 
