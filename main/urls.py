@@ -3,6 +3,7 @@ from main.views.websites import WebsiteList, WebsiteDetails, WebsiteCreate, Webs
 from main.views.pages import PageCreate, PageDetails, PageUpdate, PageDelete
 from main.views.textblocks import TextBlockCreate, TextBlockUpdate, TextBlockDelete
 from main.views.pageimages import PageImageUpload, PageImageUpdate, PageImageDelete
+from main.views.videolinks import VideoLinkCreate, VideoLinkUpdate, VideoLinkDelete
 from main.views.news import NewsCreate, NewsUpdate, NewsDelete
 
 urlpatterns = [
@@ -21,6 +22,9 @@ urlpatterns = [
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/pageimages/upload/$', PageImageUpload.as_view(), name='pageimage_upload'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/pageimages/(?P<pk>\d+)/update/$', PageImageUpdate.as_view(), name='pageimage_update'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/pageimages/(?P<pk>\d+)/delete/$', PageImageDelete.as_view(), name='pageimage_delete'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/videolinks/add/$', VideoLinkCreate.as_view(), name='videolink_create'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/videolinks/(?P<pk>\d+)/update/$', VideoLinkUpdate.as_view(), name='videolink_update'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/videolinks/(?P<pk>\d+)/delete/$', VideoLinkDelete.as_view(), name='videolink_delete'),
     url(r'^websites/(?P<site_id>\d+)/news/add/$', NewsCreate.as_view(), name='news_create'),
     url(r'^websites/(?P<site_id>\d+)/news/(?P<pk>\d+)/update/$', NewsUpdate.as_view(), name='news_update'),
     url(r'^websites/(?P<site_id>\d+)/news/(?P<pk>\d+)/delete/$', NewsDelete.as_view(), name='news_delete'),

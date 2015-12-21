@@ -50,6 +50,7 @@ class PageDetails(DetailView):
 		context = super(PageDetails, self).get_context_data(**kwargs)
 		context['textblocks'] = self.object.textblock_set.all()
 		context['pageimages'] = self.object.pageimage_set.all()
+		context['videolinks'] = self.object.videolink_set.all()
 
 		return context
 
