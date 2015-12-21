@@ -54,17 +54,17 @@
 					<table class="table table-hover">
 						{% for pageimage in pageimages %}
 						<tr>
-							<td class="col-md-11">
-								<p>{{ pageimage.name }}</p>
-								<p><img src="{{ pageimage.image.url }}" alt="{{ pageimage.name }}"></p>
-							</td>
-							<td class="col-md-1">
-								<a href="{% url 'main:pageimage_update' site_id=page.site.id page_id=page.id pk=pageimage.id %}" title="Edit">
+							<td>
+								<p>
+									{{ pageimage.name }}
+									<a href="{% url 'main:pageimage_update' site_id=page.site.id page_id=page.id pk=pageimage.id %}" title="Edit">
 									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
-								<a href="{% url 'main:pageimage_delete' site_id=page.site.id page_id=page.id pk=pageimage.id %}" title="Delete">
-									<span class="glyphicon glyphicon-trash"></span>
-								</a>
+									</a>
+									<a href="{% url 'main:pageimage_delete' site_id=page.site.id page_id=page.id pk=pageimage.id %}" title="Delete">
+										<span class="glyphicon glyphicon-trash"></span>
+									</a>
+								</p>
+								<p><img src="{{ pageimage.image.url }}" alt="{{ pageimage.name }}"></p>
 							</td>
 						</tr>
 						{% endfor %}	
