@@ -20,9 +20,7 @@ class NewsCreate(CreateView):
 
 
     def form_valid(self, form):
-        news = News(title=form.cleaned_data.get('title'), source=form.cleaned_data.get('source'), content=form.cleaned_data.get('content'), image=form.cleaned_data.get('image'))
-        news.site = Website.objects.get(pk=self.kwargs.get('site_id'))
-        news.save()
+        form.instance.site = Website.objects.get(pk=self.kwargs.get('site_id'))
 
         return super(NewsCreate, self).form_valid(form)
 
