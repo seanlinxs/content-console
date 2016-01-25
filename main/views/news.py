@@ -3,16 +3,15 @@ import uuid
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import UpdateView, DeleteView, FormView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
 from main.models import Website, News
-from main.forms import NewsForm
 
 
-class NewsCreate(FormView):
-    template_name = 'main/news_form.html'
-    form_class = NewsForm
+class NewsCreate(CreateView):
+    model = News
+    fields = ['title', 'source', 'content', 'image']
 
 
     @method_decorator(login_required)
@@ -21,7 +20,7 @@ class NewsCreate(FormView):
 
 
     def form_valid(self, form):
-        news = News(title=form.cleaned_data.get('title'), content=form.cleaned_data.get('content'), image=form.cleaned_data.get('image'))
+        news = News(title=form.cleaned_data.get('title'), source=form.cleaned_data.get('source'), content=form.cleaned_data.get('content'), image=form.cleaned_data.get('image'))
         news.site = Website.objects.get(pk=self.kwargs.get('site_id'))
         news.save()
 
@@ -42,7 +41,7 @@ class NewsCreate(FormView):
 
 class NewsUpdate(UpdateView):
     model = News
-    fields = ['title', 'content', 'image']
+    fields = ['title', 'source', 'content', 'image']
 
     
     @method_decorator(login_required)
