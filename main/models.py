@@ -5,6 +5,14 @@ from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
+
+styleclasses = {
+    'ABOVE': 'row',
+    'LEFT': 'left col-md-5',
+    'RIGHT': 'right col-md-5',
+    'BELOW': 'row'
+}
+
 class Website(models.Model):
     name = models.CharField(max_length=200, unique=True)
     owner = models.ForeignKey(User)
@@ -52,51 +60,18 @@ class Paragraph(models.Model):
     page = models.ForeignKey(Page)
     markdown = models.TextField()
     display_order = models.IntegerField()
+    image = models.FileField(null=True, blank=True, upload_to='paragraphimages/%Y/%m/%d')
+    video_link = models.CharField(max_length=500, null=True, blank=True, help_text="Only support youtube embedded video link, e.g https://www.youtube.com/embed/mqH2LLVloE4")
+    LAYOUTS = (
+        ('TB', 'Top text, bottom media'),
+        ('BT', 'Bottom text, top media'),
+        ('LR', 'Left text, right media'),
+        ('RL', 'Right text, left media')
+    )
+    layout = models.CharField(max_length=2, choices=LAYOUTS, default='LR')
 
     class Meta:
         ordering = ['display_order']
-
-    def __str__(self):
-        return self.name
-
-
-class ParagraphImage(models.Model):
-    name = models.CharField(max_length=200)
-    image = models.FileField(upload_to='paragraphimages/%Y/%m/%d')
-    paragraph = models.ForeignKey(Paragraph)
-    LAYOUTS = (
-        ('ABOVE', 'On top of the paragraph'),
-        ('LEFT', 'Left aside of the paragraph'),
-        ('RIGHT', 'Right aside of the paragraph'),
-        ('BELOW', 'Under the paragraph')
-    )
-    layout = models.CharField(max_length=10, choices=LAYOUTS, default='RIGHT')
-
-    
-    class Meta:
-        ordering = ['id']
-
-    
-    def __str__(self):
-        return self.name
-
-
-class ParagraphVideo(models.Model):
-    name = models.CharField(max_length=200)
-    link = models.CharField(max_length=500, help_text="Only support youtube embedded video link, e.g https://www.youtube.com/embed/mqH2LLVloE4")
-    paragraph = models.ForeignKey(Paragraph)
-    LAYOUTS = (
-        ('ABOVE', 'On top of the paragraph'),
-        ('LEFT', 'Left aside of the paragraph'),
-        ('RIGHT', 'Right aside of the paragraph'),
-        ('BELOW', 'Under the paragraph')
-    )
-    layout = models.CharField(max_length=10, choices=LAYOUTS, default='ABOVE')
-
-
-    class Meta:
-        ordering = ['id']
-
 
     def __str__(self):
         return self.name
