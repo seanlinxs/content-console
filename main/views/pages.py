@@ -48,6 +48,7 @@ class PageDetails(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PageDetails, self).get_context_data(**kwargs)
+        context['paragraphs'] = self.object.paragraph_set.all()
         context['textblocks'] = self.object.textblock_set.all()
         context['pageimages'] = self.object.pageimage_set.all()
         context['videolinks'] = self.object.videolink_set.all()

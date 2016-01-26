@@ -43,7 +43,7 @@ class ParagraphDetails(DetailView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(PageDetails, self).dispatch(*args, **kwargs)
+        return super(ParagraphDetails, self).dispatch(*args, **kwargs)
 
 
     def get_context_data(self, **kwargs):
@@ -56,7 +56,7 @@ class ParagraphDetails(DetailView):
 
 class ParagraphUpdate(UpdateView):
     model = Paragraph
-    fields = ['name', 'content', 'display_order']
+    fields = ['name', 'markdown', 'display_order']
 
 
     @method_decorator(login_required)

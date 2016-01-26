@@ -5,6 +5,9 @@ from main.views.textblocks import TextBlockCreate, TextBlockUpdate, TextBlockDel
 from main.views.pageimages import PageImageUpload, PageImageUpdate, PageImageDelete
 from main.views.videolinks import VideoLinkCreate, VideoLinkUpdate, VideoLinkDelete
 from main.views.news import NewsCreate, NewsUpdate, NewsDelete
+from main.views.paragraphs import ParagraphCreate, ParagraphDetails, ParagraphUpdate, ParagraphDelete
+from main.views.paragraphimages import ParagraphImageUpload, ParagraphImageUpdate, ParagraphImageDelete
+from main.views.paragraphvideos import ParagraphVideoCreate, ParagraphVideoUpdate, ParagraphVideoDelete
 
 urlpatterns = [
     # Website
@@ -40,7 +43,7 @@ urlpatterns = [
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<pk>\d+)/update/$', ParagraphUpdate.as_view(), name='paragraph_update'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<pk>\d+)/delete/$', ParagraphDelete.as_view(), name='paragraph_delete'),
     # ParagraphImage
-    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<paragraph_id>\d+)/paragraphimages/add/$', ParagraphImageCreate.as_view(), name='paragraphimage_create'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<paragraph_id>\d+)/paragraphimages/add/$', ParagraphImageUpload.as_view(), name='paragraphimage_upload'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<paragraph_id>\d+)/paragraphimages/(?P<pk>\d+)/update/$', ParagraphImageUpdate.as_view(), name='paragraphimage_update'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<paragraph_id>\d+)/paragraphimages/(?P<pk>\d+)/delete/$', ParagraphImageDelete.as_view(), name='paragraphimage_delete'),
     # ParagraphVideo

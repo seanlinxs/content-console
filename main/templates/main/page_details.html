@@ -20,7 +20,7 @@
 	    <tr>
 	      <td class="col-md-11">
 		<p>
-		  <label><a href="{% url 'main:paragraph_details' site_id=website.id page_id=page.id pk=paragraph.id %}">{{ paragraph.name }}</a></label>
+		  <label><a href="{% url 'main:paragraph_details' site_id=page.site.id page_id=page.id pk=paragraph.id %}">{{ paragraph.name }}</a></label>
 		</p>
 		<p>
 		  {{ paragraph.markdown }}

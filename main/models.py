@@ -54,7 +54,7 @@ class Paragraph(models.Model):
     display_order = models.IntegerField()
 
     class Meta:
-        ordering = ['id']
+        ordering = ['display_order']
 
     def __str__(self):
         return self.name
