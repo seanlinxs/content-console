@@ -19,10 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from main import urls as main_urls
-from main.views.home import Home
+from main.views.websites import WebsiteList
 
 urlpatterns = [
-    url(r'^$', Home.as_view(), name='home'),
+    url(r'^$', WebsiteList.as_view(), name='home'),
     url(r'^main/', include(main_urls, namespace='main')),
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
