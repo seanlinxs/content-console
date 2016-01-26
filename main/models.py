@@ -21,7 +21,7 @@ class Website(models.Model):
 class Page(models.Model):
     name = models.CharField(max_length=200)
     site = models.ForeignKey(Website)
-    title = models.CharField(max_length=200, help_text="Title will be displayed in both browser's title bar and page title.")
+    title = models.CharField(max_length=200)
     heading = models.TextField(blank=True)
 
     
@@ -43,6 +43,61 @@ class TextBlock(models.Model):
         ordering = ['id']
 
     
+    def __str__(self):
+        return self.name
+
+
+class Paragraph(models.Model):
+    name = models.CharField(max_length=200)
+    page = models.ForeignKey(Page)
+    markdown = models.TextField()
+    display_order = models.IntegerField()
+
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name
+
+
+class ParagraphImage(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.FileField(upload_to='paragraphimages/%Y/%m/%d')
+    paragraph = models.ForeignKey(Paragraph)
+    LAYOUTS = (
+        ('ABOVE', 'On top of the paragraph'),
+        ('LEFT', 'Left aside of the paragraph'),
+        ('RIGHT', 'Right aside of the paragraph'),
+        ('BELOW', 'Under the paragraph')
+    )
+    layout = models.CharField(max_length=10, choices=LAYOUTS, default='RIGHT')
+
+    
+    class Meta:
+        ordering = ['id']
+
+    
+    def __str__(self):
+        return self.name
+
+
+class ParagraphVideo(models.Model):
+    name = models.CharField(max_length=200)
+    link = models.CharField(max_length=500, help_text="Only support youtube embedded video link, e.g https://www.youtube.com/embed/mqH2LLVloE4")
+    paragraph = models.ForeignKey(Paragraph)
+    LAYOUTS = (
+        ('ABOVE', 'On top of the paragraph'),
+        ('LEFT', 'Left aside of the paragraph'),
+        ('RIGHT', 'Right aside of the paragraph'),
+        ('BELOW', 'Under the paragraph')
+    )
+    layout = models.CharField(max_length=10, choices=LAYOUTS, default='ABOVE')
+
+
+    class Meta:
+        ordering = ['id']
+
+
     def __str__(self):
         return self.name
 
