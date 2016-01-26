@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{% block title %}{{ page.name }}{% endblock %}</h1>
+<h1>{% block title %}{{ paragraph.name }}{% endblock %}</h1>
 
 <div class="panel-group" id="accordion">
   <div class="panel panel-default" id="images-panel">
@@ -16,7 +16,7 @@
 	<p><a href="{% url 'main:paragraphimage_upload' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
 	<div class="table-responsive">
 	  <table class="table table-hover">
-	    {% for paragraphimage in pagagraphimages %}
+	    {% for paragraphimage in paragraphimages %}
 	    <tr>
 	      <td>
 		<p>
@@ -29,6 +29,7 @@
 		  </a>
 		</p>
 		<p><img src="{{ paragraphimage.image.url }}" alt="{{ paragraphimage.name }}"></p>
+		<p><label>Layout: </label>{{ paragraphimage.layout }}</p>
 	      </td>
 	    </tr>
 	    {% endfor %}	
@@ -53,6 +54,7 @@
 	      <td class="col-md-11">
 		<p>{{ paragraphvideo.name }}</p>
 		<p><iframe width="640" height="360" src="{{ paragraphvideo.link }}" frameborder="0" allowfullscreen></iframe></p>
+		<p><label>Layout: </label>{{ paragraphvideo.layout }}</p>
 	      </td>
 	      <td class="col-md-1">
 		<a href="{% url 'main:paragraphvideo_update' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id pk=paragraphvideo.id %}" title="Edit">

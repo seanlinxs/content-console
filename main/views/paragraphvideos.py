@@ -17,17 +17,17 @@ class ParagraphVideoCreate(CreateView):
 
 
     def form_valid(self, form):
-        form.instance.page = Paragraph.objects.get(pk=self.kwargs.get('paragraph_id'))
+        form.instance.paragraph = Paragraph.objects.get(pk=self.kwargs.get('paragraph_id'))
 
         return super(ParagraphVideoCreate, self).form_valid(form)
 
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphVideoCreate, self).get_context_data(**kwargs)
-        context['title'] = 'Create new video link'
+        context['title'] = 'Create paragraph video'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
 
         return context
 
@@ -51,7 +51,7 @@ class ParagraphVideoUpdate(UpdateView):
         context['title'] = 'Edit video link'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
 
         return context
 
@@ -73,7 +73,7 @@ class ParagraphVideoDelete(DeleteView):
         context = super(ParagraphVideoDelete, self).get_context_data(**kwargs)
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
         
         return context
 

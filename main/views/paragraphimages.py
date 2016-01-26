@@ -27,10 +27,10 @@ class ParagraphImageUpload(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphImageUpload, self).get_context_data(**kwargs)
-        context['title'] = 'Upload page image'
+        context['title'] = 'Upload paragraph image'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
         
         return context
 
@@ -54,7 +54,7 @@ class ParagraphImageUpdate(UpdateView):
         context['title'] = 'Edit page image'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
 
         return context
 
@@ -74,9 +74,10 @@ class ParagraphImageDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphImageDelete, self).get_context_data(**kwargs)
+        context['title'] = "Confirm delete paragraph image"
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
-        context['parahraph_id'] = self.kwargs.get('paragraph_id')
+        context['paragraph_id'] = self.kwargs.get('paragraph_id')
 
         return context
 

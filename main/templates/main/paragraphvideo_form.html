@@ -9,7 +9,7 @@
   {% include 'main/form_snippet.html' %}
   <div>
     <input type="submit" value="Save" class="btn btn-primary">
-    <a href="{% url 'main:page_details' site_id=site_id pk=page_id %}" class="btn btn-default">Cancel</a>
+    <a href="{% url 'main:paragraph_details' site_id=site_id page_id=page_id pk=paragraph_id %}" class="btn btn-default">Cancel</a>
   </div>
 </form>
 
