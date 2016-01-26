@@ -63,7 +63,7 @@ class PageImage(models.Model):
 
 class VideoLink(models.Model):
     name = models.CharField(max_length=200)
-    link = models.CharField(max_length=500)
+    link = models.CharField(max_length=500, help_text="Only support youtube embedded video link, e.g https://www.youtube.com/embed/mqH2LLVloE4")
     page = models.ForeignKey(Page)
 
 
