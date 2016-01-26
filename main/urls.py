@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^websites/(?P<site_id>\d+)/news/(?P<pk>\d+)/delete/$', NewsDelete.as_view(), name='news_delete'),
     # Paragraph
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/add/$', ParagraphCreate.as_view(), name='paragraph_create'),
+    url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<pk>\d+)/details/$', ParagraphDetails.as_view(), name='paragraph_details'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<pk>\d+)/update/$', ParagraphUpdate.as_view(), name='paragraph_update'),
     url(r'^websites/(?P<site_id>\d+)/pages/(?P<page_id>\d+)/paragraphs/(?P<pk>\d+)/delete/$', ParagraphDelete.as_view(), name='paragraph_delete'),
     # ParagraphImage

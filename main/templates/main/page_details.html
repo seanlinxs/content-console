@@ -5,6 +5,42 @@
 <h1>{% block title %}{{ page.name }}{% endblock %}</h1>
 
 <div class="panel-group" id="accordion">
+  <div class="panel panel-default" id="paragraphs-panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+	<a data-toggle="collapse" data-target="#paragraphs" href="#paragraphs">Paragraphs</a>
+      </h4>
+    </div>
+    <div class="panel-collaps collapse in" id="paragraphs">
+      <div class="panel-body">
+	<p><a href="{% url 'main:paragraph_create' site_id=page.site.id page_id=page.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
+	<div class="table-responsive">
+	  <table class="table table-hover">
+	    {% for paragraph in paragraphs %}
+	    <tr>
+	      <td class="col-md-11">
+		<p>
+		  <label><a href="{% url 'main:paragraph_details' site_id=website.id page_id=page.id pk=paragraph.id %}">{{ paragraph.name }}</a></label>
+		</p>
+		<p>
+		  {{ paragraph.markdown }}
+		</p>
+	      </td>
+	      <td class="col-md-1">
+		<a href="{% url 'main:paragraph_update' site_id=page.site.id page_id=page.id pk=paragraph.id %}" title="Edit">
+		  <span class="glyphicon glyphicon-pencil"></span>
+		</a>
+		<a href="{% url 'main:paragraph_delete' site_id=page.site.id page_id=page.id pk=paragraph.id %}" title="Delete">
+		  <span class="glyphicon glyphicon-trash"></span>
+		</a>
+	      </td>
+	    </tr>
+	    {% endfor %}
+	  </table>
+	</div>
+      </div>
+    </div>
+  </div>
   <div class="panel panel-default" id="textblocks-panel">
     <div class="panel-heading">
       <h4 class="panel-title">

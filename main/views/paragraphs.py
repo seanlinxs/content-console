@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
@@ -33,6 +34,24 @@ class ParagraphCreate(CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('main:page_details', kwargs={'site_id':self.kwargs.get('site_id'), 'pk':self.kwargs.get('page_id')})
+
+
+class ParagraphDetails(DetailView):
+    model = Paragraph
+    template_name = 'main/paragraph_details.html'
+
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PageDetails, self).dispatch(*args, **kwargs)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(ParagraphDetails, self).get_context_data(**kwargs)
+        context['paragraphimages'] = self.object.paragraphimage_set.all()
+        context['paragraphvideos'] = self.object.paragraphvideo_set.all()
+
+        return context
 
 
 class ParagraphUpdate(UpdateView):
