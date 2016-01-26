@@ -3,7 +3,9 @@
 {% block content %}
 
 <h1>{% block title %}{{ paragraph.name }}{% endblock %}</h1>
-
+<p>
+  <a href="{% url 'main:page_details' site_id=site_id pk=page_id %}" class="btn btn-default">Back to page</a>
+</p>
 <div class="panel-group" id="accordion">
   <div class="panel panel-default" id="images-panel">
     <div class="panel-heading">
@@ -18,18 +20,18 @@
 	  <table class="table table-hover">
 	    {% for paragraphimage in paragraphimages %}
 	    <tr>
-	      <td>
-		<p>
-		  {{ paragraphimage.name }}
-		  <a href="{% url 'main:paragraphimage_update' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id pk=paragraphimage.id %}" title="Edit">
-		    <span class="glyphicon glyphicon-pencil"></span>
-		  </a>
-		  <a href="{% url 'main:paragraphimage_delete' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id pk=paragraphimage.id %}" title="Delete">
-		    <span class="glyphicon glyphicon-trash"></span>
-		  </a>
-		</p>
+	      <td class="col-md-11">
+		<p>{{ paragraphimage.name }}</p>
 		<p><img src="{{ paragraphimage.image.url }}" alt="{{ paragraphimage.name }}"></p>
 		<p><label>Layout: </label>{{ paragraphimage.layout }}</p>
+	      </td>
+	      <td class="col-md-1">
+		<a href="{% url 'main:paragraphimage_update' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id pk=paragraphimage.id %}" title="Edit">
+		  <span class="glyphicon glyphicon-pencil"></span>
+		</a>
+		<a href="{% url 'main:paragraphimage_delete' site_id=paragraph.page.site.id page_id=paragraph.page.id paragraph_id=paragraph.id pk=paragraphimage.id %}" title="Delete">
+		  <span class="glyphicon glyphicon-trash"></span>
+		</a>		
 	      </td>
 	    </tr>
 	    {% endfor %}	

@@ -71,6 +71,7 @@ class ParagraphVideoDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphVideoDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Confirm delete paragraph video'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
         context['paragraph_id'] = self.kwargs.get('paragraph_id')

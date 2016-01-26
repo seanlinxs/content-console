@@ -74,7 +74,7 @@ class ParagraphImageDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphImageDelete, self).get_context_data(**kwargs)
-        context['title'] = "Confirm delete paragraph image"
+        context['title'] = 'Confirm delete paragraph image'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
         context['paragraph_id'] = self.kwargs.get('paragraph_id')

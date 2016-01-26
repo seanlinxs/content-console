@@ -8,7 +8,7 @@
   {% csrf_token %}
   <p>Are you sure you want to delete {{ object }}?</p>
   <input type="submit" value="Delete" class="btn btn-danger">
-  <a href="{% url 'main:paragraph_details' site_id=site_id page_id=page_id pk=paragraph_id %}" class="btn btn-default">Cancel</a>
+  <a href="{% url 'main:page_details' site_id=site_id pk=page_id %}" class="btn btn-default">Cancel</a>
 </form>
 
 {% endblock %}

@@ -48,6 +48,8 @@ class ParagraphDetails(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphDetails, self).get_context_data(**kwargs)
+        context['site_id'] = self.kwargs.get('site_id')
+        context['page_id'] = self.kwargs.get('page_id')
         context['paragraphimages'] = self.object.paragraphimage_set.all()
         context['paragraphvideos'] = self.object.paragraphvideo_set.all()
 
@@ -88,6 +90,7 @@ class ParagraphDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(ParagraphDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Confirm delete paragraph'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
         
