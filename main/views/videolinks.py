@@ -69,6 +69,7 @@ class VideoLinkDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(VideoLinkDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Confirm delete video link'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
         

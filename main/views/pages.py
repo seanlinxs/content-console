@@ -88,6 +88,7 @@ class PageDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(PageDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Confirm delete page'
         context['site_id'] = self.kwargs.get('site_id')
 
         return context

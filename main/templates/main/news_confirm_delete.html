@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{% block title %}Confirm delete news{% endblock %}</h1>
+<h1>{% block title %}{{ title }}{% endblock %}</h1>
 
 <form method="post">
     {% csrf_token %}

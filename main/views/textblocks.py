@@ -69,6 +69,7 @@ class TextBlockDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(TextBlockDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Confirm delete text block'
         context['site_id'] = self.kwargs.get('site_id')
         context['page_id'] = self.kwargs.get('page_id')
         

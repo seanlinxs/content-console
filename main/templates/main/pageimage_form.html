@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{% block title %}Upload page image{% endblock %}</h1>
+<h1>{% block title %}{{ title }}{% endblock %}</h1>
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
