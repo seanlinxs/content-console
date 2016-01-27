@@ -33,7 +33,7 @@ class ParagraphCreate(CreateView):
 
 class ParagraphUpdate(UpdateView):
     model = Paragraph
-    fields = ['name', 'markdown', 'display_order']
+    fields = ['name', 'markdown', 'display_order', 'image', 'video_link', 'layout']
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

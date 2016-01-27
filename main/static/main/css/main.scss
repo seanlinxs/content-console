@@ -66,12 +66,8 @@ body {
   content:"\e080";
 }
 
-label {
-    display: block;
-}
-
 .form-group {
-    input, textarea {
+    input[type="text"], textarea {
 	width: 100%;
     }
 }

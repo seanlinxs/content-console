@@ -20,17 +20,21 @@
 	    <tr>
 	      <td class="col-md-11">
 		<p>
-		  <label><a href="{% url 'main:paragraph_details' site_id=page.site.id page_id=page.id pk=paragraph.id %}">{{ paragraph.name }}</a></label>
+		  <label>{{ paragraph.name }}</label>
 		</p>
 		<p>
 		  {{ paragraph.markdown }}
 		</p>
+		{% if paragraph.image %}
 		<p>
 		  <img src="{{ paragraph.image.url }}" alt="{{ paragraph.name }}">
 		</p>
+		{% endif %}
+		{% if paragraph.video_link %}
 		<p>
 		  <iframe width="640" height="360" src="{{ paragraph.video_link }}" frameborder="0" allowfullscreen></iframe>
 		</p>
+		{% endif %}
 	      </td>
 	      <td class="col-md-1">
 		<a href="{% url 'main:paragraph_update' site_id=page.site.id page_id=page.id pk=paragraph.id %}" title="Edit">
@@ -98,7 +102,7 @@
 	    <tr>
 	      <td>
 		<p>
-		  {{ pageimage.name }}
+		  <label>{{ pageimage.name }}</label>
 		  <a href="{% url 'main:pageimage_update' site_id=page.site.id page_id=page.id pk=pageimage.id %}" title="Edit">
 		    <span class="glyphicon glyphicon-pencil"></span>
 		  </a>
