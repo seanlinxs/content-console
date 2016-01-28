@@ -23,7 +23,7 @@
 		  <label>{{ paragraph.name }}</label>
 		</p>
 		<p>
-		  {{ paragraph.markdown }}
+		  {{ paragraph|safe }}
 		</p>
 		{% if paragraph.image %}
 		<p>
