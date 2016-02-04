@@ -11,7 +11,7 @@ from main.models import Website, News
 
 class NewsCreate(CreateView):
     model = News
-    fields = ['title', 'source', 'content', 'image']
+    fields = ['title', 'source', 'content', 'image', 'release_date']
 
 
     @method_decorator(login_required)
@@ -39,7 +39,7 @@ class NewsCreate(CreateView):
 
 class NewsUpdate(UpdateView):
     model = News
-    fields = ['title', 'source', 'content', 'image']
+    fields = ['title', 'source', 'content', 'image', 'release_date']
 
     
     @method_decorator(login_required)
